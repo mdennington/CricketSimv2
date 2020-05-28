@@ -4,10 +4,14 @@ using System.Text;
 
 namespace CricketSimv2
 {
+    public interface IOutcome
+    {
+        bool IsValidBall();
+    }
     /// <summary>
     /// Ball outcome class to instantiate a ball outcome value object
     /// </summary>
-    public class Outcome
+    public class Outcome : IOutcome
     {
         public bool wicket { get; private set; }
         public int runs { get; private set; }
@@ -20,9 +24,12 @@ namespace CricketSimv2
 
         public int legByes { get; private set; }
 
+        public Outcome ()
+        {
 
-        // TODO Create Random Number Generator and Interface in Common Folder
-        // TODO 
+        }
+
+ 
         public Outcome(IRandomNumberGenerator rand)
         {
             var result = rand.GetRandomNumber(0, 133);
@@ -167,8 +174,9 @@ namespace CricketSimv2
             // 3% are dismissals
         }
 
-        internal int IsValidBall()
+        public bool IsValidBall()
         {
+            // TODO: return True if valid ball i.e. not no ball or wides
             throw new NotImplementedException();
         }
     }

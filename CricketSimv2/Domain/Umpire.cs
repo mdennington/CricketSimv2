@@ -27,6 +27,7 @@ namespace CricketSimv2.Domain
             // TODO Play and innnings
             bool endOfInnings = false;
             var currentBatsman = new Batsman();
+            var outcomeFactory = new ConcreteOutcomeFactory();
 
             do
             {
@@ -35,8 +36,9 @@ namespace CricketSimv2.Domain
                 do
                 {
                     var ball = currentBowler.bowl();
-                    Outcome ballOutcome = currentBatsman.play(ball);
-                    ballsBowled += ballOutcome.IsValidBall();
+                    IOutcome ballOutcome = currentBatsman.Play(ball, outcomeFactory);
+                    if (ballOutcome.IsValidBall()) ballsBowled++;
+                    
                     scoreKeeper.UpdateScoreboard(ballOutcome);
 
                 } while (!endOfInnings & ballsBowled != EndOfOver);

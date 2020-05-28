@@ -6,7 +6,7 @@ namespace CricketSimv2.Domain
 {
     class Scorekeeper
     {
-        internal void UpdateScoreboard(Outcome ballOutcome)
+        internal void UpdateScoreboard(IOutcome ballOutcome)
         {
             throw new NotImplementedException();
         }
